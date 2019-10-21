@@ -1,6 +1,11 @@
 # Created by https://www.gitignore.io/api/code,eclipse
 # Based on template from https://www.gitignore.io/?templates=code,eclipse
 
+# Spring InitializR
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+
 ### Code ###
 .vscode/*
 !.vscode/settings.json
