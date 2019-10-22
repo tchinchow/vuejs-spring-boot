@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>net.tchinchow.vuejs-spring-boot</groupId>
+	<artifactId>vuejs-spring-boot</artifactId>
+	<version>${revision}</version>
+	<name>vuejs-spring-boot</name>
+	<description>Demo project serving a VueJs front-end over a Spring Boot back-end (parent POM)</description>
+    <packaging>pom</packaging>
+
+	<properties>
+		<revision>0-SNAPSHOT</revision>
+	</properties>
+
+    <modules>
+        <module>vuejs-frontend</module>     
+        <module>spring-backend</module>     
+    </modules>
+</project>

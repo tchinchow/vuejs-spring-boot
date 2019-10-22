@@ -1,15 +1,24 @@
 <template>
   <div class="hello">
-    <p>
-    <button class=”Search__button” @click="callRestService()">CALL Spring Boot REST backend service from VueJS</button>
-    </p>
-    <h3>Response</h3>
-    <p>{{ response }}</p>
-    <h3>Errors</h3>
-    <p>{{ errors }}</p>
     <h3>Misc Values</h3>
-    <p>{{ messageTarget }}</p>
-    <p>{{ messageBaseUrl }}</p>
+    <ul>
+      <li>Target URL: "{{ messageTarget }}"</li>
+      <li>Application Base URL: "{{ messageBaseUrl }}"</li>
+    </ul>
+    <h3>API</h3>
+    <button class=”Search__button” @click="callRestService()">CALL Spring Boot REST backend service from VueJS</button>
+    <h4>Response</h4>
+    <ul id="example-1">
+      <li v-for="(item, index) in responses" v-bind:item="item" v-bind:index="index" v-bind:key="item.id">
+        [{{index}}]: <code>{{item === null ? 'null' : item}}</code>
+      </li>
+    </ul>
+    <h4>Errors</h4>
+    <ul id="example-1">
+      <li v-for="(item, index) in errors" v-bind:key="index">
+        [{{index}}]: <code>{{item === null ? 'null' : item}}</code>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -22,7 +31,7 @@ export default {
     return {
       messageTarget: '',
       messageBaseUrl: '',
-      response: [],
+      responses: [],
       errors: []
     };
   },
@@ -32,14 +41,15 @@ export default {
   },
   methods: {
     callRestService() {
-      console.log('pouet')
       axios
         .get(process.env.VUE_APP_REMOTE_SERVER + `/api/hello`)
         .then(response => {
           // JSON responses are automatically parsed.
-          this.response = response.data;
+          this.responses.push(response.data);
+          this.errors.push(null);
         })
         .catch(e => {
+          this.responses.push(null);
           this.errors.push(e);
         });
     }
