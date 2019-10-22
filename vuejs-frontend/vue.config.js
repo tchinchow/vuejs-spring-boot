@@ -1,4 +1,7 @@
 module.exports = {
-    outputDir: 'target/classes/META-INF/resources',
-    assetsDir: 'static'
+  "outputDir": "target/classes/META-INF/resources",
+  "assetsDir": "static",
+  "transpileDependencies": [
+    "vuetify"
+  ]
 }
