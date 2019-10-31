@@ -11,51 +11,51 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import net.tchinchow.vuejs_spring_boot.spring_backend.entity.User;
-import net.tchinchow.vuejs_spring_boot.spring_backend.service.UsersService;
+import net.tchinchow.vuejs_spring_boot.spring_backend.entity.AppUser;
+import net.tchinchow.vuejs_spring_boot.spring_backend.service.AppUserService;
 
 /**
  * @author JavaSolutionsGuide
  *
  */
 @RestController
-public class UsersRestController {
+public class UserRestController {
 
     @Autowired
-    private UsersService usersService;
+    private AppUserService userService;
 
-    public void setUserService(UsersService usersService) {
-        this.usersService = usersService;
+    public void setUserService(AppUserService userService) {
+        this.userService = userService;
     }
 
-    @GetMapping("/api/users")
-    public List<User> getUsers() {
-        List<User> users = usersService.getUsers();
+    @GetMapping("/api/user")
+    public List<AppUser> getUsers() {
+        List<AppUser> users = userService.getUsers();
         return users;
     }
 
-    @GetMapping("/api/users/{userId}")
-    public User getUser(@PathVariable(name = "userId") Long userId) {
-        return usersService.getUser(userId);
+    @GetMapping("/api/user/{userId}")
+    public AppUser getUser(@PathVariable(name = "userId") Long userId) {
+        return userService.getUser(userId);
     }
 
-    @PostMapping("/api/users")
-    public void saveUser(User user) {
-        usersService.saveUser(user);
+    @PostMapping("/api/user")
+    public void saveUser(AppUser user) {
+        userService.saveUser(user);
         System.out.println("User Saved Successfully");
     }
 
     @DeleteMapping("/api/users/{userId}")
     public void deleteUser(@PathVariable(name = "userId") Long userId) {
-        usersService.deleteUser(userId);
+        userService.deleteUser(userId);
         System.out.println("User Deleted Successfully");
     }
 
     @PutMapping("/api/users/{userId}")
-    public void updateUser(@RequestBody User user, @PathVariable(name = "userId") Long userId) {
-        User storedUser = usersService.getUser(userId);
+    public void updateUser(@RequestBody AppUser user, @PathVariable(name = "userId") Long userId) {
+        AppUser storedUser = userService.getUser(userId);
         if (storedUser != null) {
-            usersService.updateUser(user);
+            userService.updateUser(user);
         }
     }
 
