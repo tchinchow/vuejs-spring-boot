@@ -26,8 +26,8 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  // mode: 'history', // HTML5 History API (Warning, underlying server will require extra configuration)
-  mode: 'hash',       // Compatibility mode for brtowsers that do not support History API (works withouir config when served with Tomcat)
+  mode: 'history', // HTML5 History API (Warning, underlying server will require extra configuration)
+  // mode: 'hash', // Compatibility mode for brtowsers that do not support History API (works withouir config when served with Tomcat)
   base: process.env.BASE_URL,
   routes
 })

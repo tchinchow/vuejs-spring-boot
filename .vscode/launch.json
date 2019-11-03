@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - SpringBackendApplication",
+            "request": "launch",
+            "mainClass": "net.tchinchow.vuejs_spring_boot.spring_backend.SpringBackendApplication",
+            "projectName": "spring-backend"
+        }
+    ]
+}
