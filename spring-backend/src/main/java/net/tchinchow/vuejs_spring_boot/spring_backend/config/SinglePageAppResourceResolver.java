@@ -9,10 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
-import org.springframework.stereotype.Component;
 import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.context.support.ServletContextResourceLoader;
 import org.springframework.web.servlet.resource.ResourceResolver;
@@ -27,7 +25,6 @@ import lombok.experimental.Accessors;
 /**
  * Code from https://stackoverflow.com/questions/47381362/configure-react-to-be-served-on-spring-boot-app/47427729#47427729
  */
-@Accessors(chain=true)
 @NoArgsConstructor
 public class SinglePageAppResourceResolver implements ResourceResolver, ServletContextAware {
     private Logger logger = LoggerFactory.getLogger(getClass());
@@ -40,6 +37,8 @@ public class SinglePageAppResourceResolver implements ResourceResolver, ServletC
      * 
      * @see #setServletContext(ServletContext)
      */
+    // TODO: replace ServletContextAware by the possibility to allow setting the resource loader...
+    // TODO: ...then externalize the construction of the ServletContextResourceLoader
     private ResourceLoader servletContextResourceLoader = null;
 
     /**
@@ -47,6 +46,7 @@ public class SinglePageAppResourceResolver implements ResourceResolver, ServletC
      */
     @Getter
     @Setter
+    @Accessors(chain=true)
     private String publicPathLocation;
 
     /**
@@ -57,6 +57,7 @@ public class SinglePageAppResourceResolver implements ResourceResolver, ServletC
      */
     @Getter
     @Setter
+    @Accessors(chain=true)
     private String assetsDir = "static";
 
     /**
@@ -66,6 +67,7 @@ public class SinglePageAppResourceResolver implements ResourceResolver, ServletC
      */
     @Getter
     @Setter
+    @Accessors(chain=true)
     @NonNull
     private String indexFilename = "index.html";
 
@@ -90,6 +92,7 @@ public class SinglePageAppResourceResolver implements ResourceResolver, ServletC
      */
     @Getter
     @Setter
+    @Accessors(chain=true)
     @NonNull
     private List<String> staticFiles = Arrays.asList("favicon.ico");
 

@@ -13,12 +13,12 @@ import net.tchinchow.vuejs_spring_boot.spring_backend.entity.Greeting;
  * HelloAPIController
  */
 @RestController
-@CrossOrigin("http://localhost:3000")
+//@CrossOrigin("http://localhost:3000")
 public class HelloAPIController {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
-    @RequestMapping("/api/hello")
+    @RequestMapping("/api/public/hello")
     public Greeting greeting(@RequestParam(value = "name", defaultValue = "${welcome.message}") String name) {
         return new Greeting(counter.incrementAndGet(), String.format(template, name));
     }

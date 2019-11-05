@@ -5,6 +5,7 @@
             "name": "CodeLens (Launch) - SpringBackendApplication",
             "request": "launch",
             "mainClass": "net.tchinchow.vuejs_spring_boot.spring_backend.SpringBackendApplication",
+            // "args": ["--trace"],
             "projectName": "spring-backend"
         }
     ]

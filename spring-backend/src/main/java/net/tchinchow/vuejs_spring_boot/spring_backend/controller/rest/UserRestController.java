@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import net.tchinchow.vuejs_spring_boot.spring_backend.entity.AppUser;
@@ -19,6 +20,7 @@ import net.tchinchow.vuejs_spring_boot.spring_backend.service.AppUserService;
  *
  */
 @RestController
+@RequestMapping("/api/private/user")
 public class UserRestController {
 
     @Autowired
@@ -28,30 +30,30 @@ public class UserRestController {
         this.userService = userService;
     }
 
-    @GetMapping("/api/user")
+    @GetMapping("/")
     public List<AppUser> getUsers() {
         List<AppUser> users = userService.getUsers();
         return users;
     }
 
-    @GetMapping("/api/user/{userId}")
+    @GetMapping("/{userId}")
     public AppUser getUser(@PathVariable(name = "userId") Long userId) {
         return userService.getUser(userId);
     }
 
-    @PostMapping("/api/user")
+    @PostMapping("/")
     public void saveUser(AppUser user) {
         userService.saveUser(user);
         System.out.println("User Saved Successfully");
     }
 
-    @DeleteMapping("/api/users/{userId}")
+    @DeleteMapping("/{userId}")
     public void deleteUser(@PathVariable(name = "userId") Long userId) {
         userService.deleteUser(userId);
         System.out.println("User Deleted Successfully");
     }
 
-    @PutMapping("/api/users/{userId}")
+    @PutMapping("/{userId}")
     public void updateUser(@RequestBody AppUser user, @PathVariable(name = "userId") Long userId) {
         AppUser storedUser = userService.getUser(userId);
         if (storedUser != null) {
